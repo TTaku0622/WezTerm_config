@@ -56,6 +56,9 @@ return {
     -- Tab移動
     { key = "Tab", mods = "CTRL", action = act.ActivateTabRelative(1) },
     { key = "Tab", mods = "SHIFT|CTRL", action = act.ActivateTabRelative(-1) },
+    -- Tab移動 Cmd + ←/→（Shift を足すと入れ替え）
+    { key = "LeftArrow", mods = "SUPER", action = act.ActivateTabRelative(-1) },
+    { key = "RightArrow", mods = "SUPER", action = act.ActivateTabRelative(1) },
     -- Tab入れ替え
     { key = "{", mods = "LEADER", action = act({ MoveTabRelative = -1 }) },
     -- Tab新規作成
