@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WezTerm チートシート</title>
+<style>
+  :root {
+    --bg: #f6f5f1;
+    --card: #ffffff;
+    --text: #23262b;
+    --muted: #6b7078;
+    --line: #e3e1da;
+    --gold: #ae8b2d;
+    --slate: #5c6d74;
+    --kbd-bg: #f0eee8;
+    --kbd-line: #cfcbbf;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15171a;
+      --card: #1e2125;
+      --text: #e6e4df;
+      --muted: #9aa0a8;
+      --line: #2f3338;
+      --kbd-bg: #2a2e33;
+      --kbd-line: #444a51;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 24px 16px 40px;
+    background: var(--bg);
+    color: var(--text);
+    font: 13px/1.5 -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif;
+  }
+  header { max-width: 1200px; margin: 0 auto 16px; }
+  h1 { margin: 0 0 4px; font-size: 22px; }
+  h1 span { color: var(--gold); }
+  .lead { margin: 0; color: var(--muted); }
+  .lead strong { color: var(--text); }
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    columns: 3 340px;
+    column-gap: 14px;
+  }
+  section {
+    break-inside: avoid;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--slate);
+    border-radius: 8px;
+    padding: 10px 12px 8px;
+    margin: 0 0 14px;
+  }
+  section.accent { border-top-color: var(--gold); }
+  h2 { margin: 0 0 6px; font-size: 14px; }
+  h2 small { font-weight: normal; color: var(--muted); font-size: 11px; margin-left: 4px; }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 4px 0; border-top: 1px solid var(--line); vertical-align: top; }
+  tr:first-child td { border-top: none; }
+  td.k { white-space: nowrap; padding-right: 10px; width: 1%; }
+  kbd {
+    display: inline-block;
+    min-width: 1.6em;
+    padding: 0 5px;
+    border: 1px solid var(--kbd-line);
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    background: var(--kbd-bg);
+    font: 12px/1.6 ui-monospace, "SF Mono", Menlo, monospace;
+    text-align: center;
+  }
+  .then { color: var(--muted); margin: 0 3px; font-size: 11px; }
+  .note { margin: 6px 0 2px; color: var(--muted); font-size: 12px; }
+  .ld { background: var(--gold); border-color: var(--gold); color: #fff; }
+  footer { max-width: 1200px; margin: 6px auto 0; color: var(--muted); font-size: 11px; }
+  @media print {
+    @page { size: A4 landscape; margin: 10mm; }
+    :root { --bg: #fff; --card: #fff; --text: #000; --muted: #555; --line: #ddd; --kbd-bg: #f3f3f3; --kbd-line: #bbb; }
+    body { padding: 0; font-size: 10.5px; }
+    main { columns: 3; }
+    section { margin-bottom: 8px; padding: 6px 8px; }
+    td { padding: 2px 0; }
+    kbd { font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>WezTerm <span>チートシート</span></h1>
+  <p class="lead"><kbd class="ld">LEADER</kbd> は <strong>Ctrl+q</strong>。押して離してから、2 秒以内に次のキーを押す。<strong>日本語入力は英数にしておく</strong>（かなのままだと効かない）。</p>
+</header>
+
+<main>
+
+<section class="accent">
+  <h2>サイドバー<small>Claude Code の稼働状況</small></h2>
+  <table>
+    <tr><td class="k"><kbd>Cmd</kbd>+<kbd>E</kbd></td><td>入力先を作業画面 ⇔ サイドバーで切り替え</td></tr>
+    <tr><td class="k"><kbd class="ld">LEADER</kbd><span class="then">→</span><kbd>b</kbd></td><td>サイドバーを出す／消す（2 回押すと作り直し）</td></tr>
+    <tr><td class="k">境界線をドラッグ</td><td>幅を変える（全タブ・次回起動に引き継ぐ）</td></tr>
+  </table>
+  <p class="note">色: 🟡 作業中　🟢 完了・入力待ち　🔴 許可や回答の待ち</p>
+</section>
+
+<section class="accent">
+  <h2>サイドバーの中で<small>Cmd+E で入ったあと／マウス</small></h2>
+  <table>
+    <tr><td class="k"><kbd>1</kbd>〜<kbd>9</kbd>・クリック</td><td>AGENTS のそのエージェントのタブへ移動</td></tr>
+    <tr><td class="k"><kbd>j</kbd> <kbd>k</kbd> / <kbd>↓</kbd> <kbd>↑</kbd> / ホイール</td><td>HISTORY の選択を動かす</td></tr>
+    <tr><td class="k"><kbd>Enter</kbd>・クリック</td><td>HISTORY のセッションを新しいタブで再開</td></tr>
+    <tr><td class="k"><kbd>p</kbd>・右クリック</td><td>HISTORY のピン留め／解除</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>タブ</h2>
+  <table>
+    <tr><td class="k"><kbd>Cmd</kbd>+<kbd>T</kbd></td><td>新しいタブ（サイドバー付き）</td></tr>
+    <tr><td class="k"><kbd>Cmd</kbd>+<kbd>W</kbd></td><td>タブを閉じる（確認あり）</td></tr>
+    <tr><td class="k"><kbd>Cmd</kbd>+<kbd>1</kbd>〜<kbd>8</kbd></td><td>その番号のタブへ</td></tr>
+    <tr><td class="k"><kbd>Cmd</kbd>+<kbd>9</kbd></td><td>最後のタブへ</td></tr>
+    <tr><td class="k"><kbd>Ctrl</kbd>+<kbd>Tab</kbd></td><td>次のタブ</td></tr>
+    <tr><td class="k"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>前のタブ</td></tr>
+    <tr><td class="k"><kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>←</kbd> / <kbd>→</kbd></td><td>タブを左／右へ並べ替え</td></tr>
+    <tr><td class="k"><kbd class="ld">LEADER</kbd><span class="then">→</span><kbd>{</kbd> / <kbd>}</kbd></td><td>同上（前からのキー）</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>ペイン（画面分割）</h2>
+  <table>
+    <tr><td class="k"><kbd class="ld">LEADER</kbd><span class="then">→</span><kbd>r</kbd></td><td>右に分割</td></tr>
+    <tr><td class="k"><kbd class="ld">LEADER</kbd><span class="then">→</span><kbd>d</kbd></td><td>下に分割</td></tr>
+    <tr><td class="k"><kbd class="ld">LEADER</kbd><span class="then">→</span><kbd>x</kbd></td><td>ペインを閉じる（確認あり）</td></tr>
+    <tr><td class="k"><kbd class="ld">LEADER</kbd><span class="then">→</span><kbd>z</kbd></td><td>今のペインだけ大きく表示／戻す</td></tr>
+    <tr><td class="k"><kbd class="ld">LEADER</kbd><span class="then">→</span><kbd>h</kbd><kbd>j</kbd><kbd>k</kbd><kbd>l</kbd></td><td>左・下・上・右のペインへ移動</td></tr>
+    <tr><td class="k"><kbd class="ld">LEADER</kbd><span class="then">→</span><kbd>a</kbd><span class="then">→</span><kbd>h</kbd><kbd>j</kbd><kbd>k</kbd><kbd>l</kbd></td><td>ペイン移動（1 秒以内に方向キー）</td></tr>
+    <tr><td class="k"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>[</kbd></td><td>ペインを選ぶ（文字が出るので押して移動）</td></tr>
+  </table>
+  <p class="note">サイドバーにいるときも、分割・拡大は作業画面のほうに効く。サイドバーは <kbd class="ld">LEADER</kbd> → <kbd>x</kbd> では閉じない。</p>
+</section>
+
+<section>
+  <h2>ペインのサイズ調整</h2>
+  <table>
+    <tr><td class="k"><kbd class="ld">LEADER</kbd><span class="then">→</span><kbd>s</kbd></td><td>サイズ調整モードに入る（右下に TABLE: resize_pane）</td></tr>
+    <tr><td class="k"><kbd>h</kbd><kbd>j</kbd><kbd>k</kbd><kbd>l</kbd></td><td>境界線を左・下・上・右へ 1 マス動かす</td></tr>
+    <tr><td class="k"><kbd>Enter</kbd></td><td>終わる</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>コピー・貼り付け</h2>
+  <table>
+    <tr><td class="k">ドラッグ</td><td>選んだ範囲がそのままコピーされる</td></tr>
+    <tr><td class="k">ダブル／トリプルクリック</td><td>単語／1 行を選ぶ</td></tr>
+    <tr><td class="k"><kbd>Shift</kbd>+ドラッグ</td><td>Claude Code・vim などの中で選ぶとき</td></tr>
+    <tr><td class="k"><kbd>Cmd</kbd>+<kbd>C</kbd></td><td>コピー</td></tr>
+    <tr><td class="k"><kbd>Cmd</kbd>+<kbd>V</kbd></td><td>貼り付け</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>コピーモード<small><kbd class="ld">LEADER</kbd> → <kbd>[</kbd> で開始</small></h2>
+  <table>
+    <tr><td class="k"><kbd>h</kbd><kbd>j</kbd><kbd>k</kbd><kbd>l</kbd></td><td>左・下・上・右</td></tr>
+    <tr><td class="k"><kbd>w</kbd> / <kbd>b</kbd> / <kbd>e</kbd></td><td>次の単語 / 前の単語 / 単語の終わり</td></tr>
+    <tr><td class="k"><kbd>0</kbd> / <kbd>^</kbd> / <kbd>$</kbd></td><td>行頭 / 最初の文字 / 行末</td></tr>
+    <tr><td class="k"><kbd>f</kbd> <kbd>t</kbd> / <kbd>F</kbd> <kbd>T</kbd> + 文字</td><td>その文字まで（手前まで）前へ / 後ろへ。<kbd>;</kbd> で繰り返し</td></tr>
+    <tr><td class="k"><kbd>g</kbd> / <kbd>G</kbd></td><td>履歴のいちばん上 / 下</td></tr>
+    <tr><td class="k"><kbd>H</kbd> / <kbd>M</kbd> / <kbd>L</kbd></td><td>画面の上 / 真ん中 / 下</td></tr>
+    <tr><td class="k"><kbd>Ctrl</kbd>+<kbd>u</kbd> / <kbd>d</kbd></td><td>半ページ上 / 下</td></tr>
+    <tr><td class="k"><kbd>Ctrl</kbd>+<kbd>b</kbd> / <kbd>f</kbd></td><td>1 ページ上 / 下</td></tr>
+    <tr><td class="k"><kbd>v</kbd> / <kbd>V</kbd> / <kbd>Ctrl</kbd>+<kbd>v</kbd></td><td>選択開始：文字 / 行 / 矩形</td></tr>
+    <tr><td class="k"><kbd>o</kbd> / <kbd>O</kbd></td><td>選択のもう一方の端へ</td></tr>
+    <tr><td class="k"><kbd>y</kbd></td><td>コピー</td></tr>
+    <tr><td class="k"><kbd>Enter</kbd></td><td>コピーして終了</td></tr>
+    <tr><td class="k"><kbd>Esc</kbd> / <kbd>q</kbd> / <kbd>Ctrl</kbd>+<kbd>c</kbd></td><td>コピーせずに終了</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>ワークスペース</h2>
+  <table>
+    <tr><td class="k"><kbd class="ld">LEADER</kbd><span class="then">→</span><kbd>w</kbd></td><td>ワークスペースの一覧・切り替え</td></tr>
+    <tr><td class="k"><kbd class="ld">LEADER</kbd><span class="then">→</span><kbd>Shift</kbd>+<kbd>W</kbd></td><td>名前を付けて新しく作る</td></tr>
+    <tr><td class="k"><kbd class="ld">LEADER</kbd><span class="then">→</span><kbd>$</kbd></td><td>今のワークスペースの名前を変える</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>表示・その他</h2>
+  <table>
+    <tr><td class="k"><kbd>Ctrl</kbd>+<kbd>Cmd</kbd>+<kbd>F</kbd></td><td>フルスクリーン（macOS 標準）</td></tr>
+    <tr><td class="k"><kbd>Alt</kbd>+<kbd>Enter</kbd></td><td>フルスクリーン</td></tr>
+    <tr><td class="k"><kbd>Ctrl</kbd>+<kbd>+</kbd> / <kbd>-</kbd></td><td>文字を大きく / 小さく</td></tr>
+    <tr><td class="k"><kbd>Ctrl</kbd>+<kbd>0</kbd></td><td>文字の大きさを戻す</td></tr>
+    <tr><td class="k"><kbd>Cmd</kbd>+<kbd>P</kbd></td><td>コマンドパレット（全機能を名前で探せる）</td></tr>
+    <tr><td class="k"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd></td><td>コマンドパレット</td></tr>
+    <tr><td class="k"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd></td><td>設定を読み直す</td></tr>
+  </table>
+  <p class="note">標準のキー割り当ては切ってあるので、ここに無いキー（<kbd>Cmd</kbd>+<kbd>F</kbd> の検索など）は効かない。迷ったらコマンドパレットで探す。</p>
+</section>
+
+</main>
+
+<footer>設定: ~/.config/wezterm/（keybinds.lua / agent_sidebar.lua）　ベース: mozumasu「モテるターミナルにカスタマイズしよう（WezTerm）」をアレンジ　2026-11-02 時点</footer>
+</body>
+</html>

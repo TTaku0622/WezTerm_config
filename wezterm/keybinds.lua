@@ -68,6 +68,9 @@ return {
     -- Tabを閉じる
     { key = "w", mods = "SUPER", action = act({ CloseCurrentTab = { confirm = true } }) },
     { key = "}", mods = "LEADER", action = act({ MoveTabRelative = 1 }) },
+    -- Tab入れ替え Cmd + Shift + ←/→（LEADER なしで押せる）
+    { key = "LeftArrow", mods = "SUPER|SHIFT", action = act.MoveTabRelative(-1) },
+    { key = "RightArrow", mods = "SUPER|SHIFT", action = act.MoveTabRelative(1) },
 
     -- 画面フルスクリーン切り替え
     { key = "Enter", mods = "ALT", action = act.ToggleFullScreen },

@@ -95,6 +95,8 @@ chmod +x ~/.claude/hooks/agent-status.sh
 - 書き終えたら `jq . ~/.claude/settings.json > /dev/null && echo OK` を実行し、`OK` と出るか確かめます。カンマが1つ抜けるだけで、設定全体が読まれなくなります。
 
 ## 5. 使い方
+全部のキーを1枚にまとめたチートシートは `WezTerm_cheatsheet.html`（ブラウザで開く。印刷すると A4 横1枚）。
+
 ### 5-1. キー操作
 `LEADER` は **`Ctrl+q`** です。`Ctrl+q` を押して離してから、2 秒以内に次のキーを押します。
 | キー | 動作 |
@@ -110,7 +112,7 @@ chmod +x ~/.claude/hooks/agent-status.sh
 | `LEADER` → `h` `j` `k` `l` | ペインの移動 |
 | `LEADER` → `s` → `h` `j` `k` `l` | ペインのサイズ調整（`Enter` で終わる） |
 | `LEADER` → `[` | コピーモード（vim 風に移動、`v` で選択、`y` でコピー） |
-| `LEADER` → `{` / `}` | タブを左右に並べ替える |
+| `Cmd+Shift+←` / `→`（または `LEADER` → `{` / `}`） | タブを左右に並べ替える |
 | `LEADER` → `w` | ワークスペースの切り替え |
 | `Ctrl+Cmd+F` / `Alt+Enter` | フルスクリーン |
 | `Cmd+P` | コマンドパレット |
@@ -167,6 +169,7 @@ bash uninstall.sh
 ```
 Wezterm_config/
 ├── README.md               このファイル
+├── WezTerm_cheatsheet.html キーのチートシート
 ├── install.sh              入れるスクリプト
 ├── uninstall.sh            元に戻すスクリプト
 ├── wezterm/
